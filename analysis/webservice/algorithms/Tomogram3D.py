@@ -604,7 +604,9 @@ class Tomogram3DResults(NexusResults):
 
             url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
 
-            logger.info(f'Pulling basemap ({url})')
+            from urllib.parse import urlencode
+
+            logger.info(f'Pulling basemap ({url}?{urlencode(params)})')
 
             try:
                 elevations = results[['elevation']].values
