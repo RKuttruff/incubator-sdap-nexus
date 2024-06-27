@@ -19,6 +19,7 @@ import random
 from io import BytesIO
 from os.path import join
 from tempfile import TemporaryDirectory
+from urllib.parse import urlencode
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -604,8 +605,6 @@ class Tomogram3DResults(NexusResults):
 
             url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
 
-            from urllib.parse import urlencode
-
             logger.info(f'Pulling basemap ({url}?{urlencode(params)})')
 
             try:
@@ -745,8 +744,6 @@ class Tomogram3DResults(NexusResults):
 
             url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
 
-            from urllib.parse import urlencode
-
             logger.info(f'Pulling basemap ({url}?{urlencode(params)})')
 
             try:
@@ -760,7 +757,7 @@ class Tomogram3DResults(NexusResults):
                 buf = BytesIO(r.content)
 
                 img = Image.open(buf)
-                img_data = np.array(img)
+                img_data = np.flipud(np.array(img))
 
                 lats = np.linspace(min_lat, max_lat, num=img.height)
                 lons = np.linspace(min_lon, max_lon, num=img.width)
