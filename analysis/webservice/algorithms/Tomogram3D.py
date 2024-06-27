@@ -604,7 +604,7 @@ class Tomogram3DResults(NexusResults):
 
             url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
 
-            logger.info('Pulling basemap')
+            logger.info(f'Pulling basemap ({url})')
 
             try:
                 elevations = results[['elevation']].values
@@ -743,7 +743,7 @@ class Tomogram3DResults(NexusResults):
 
             url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export'
 
-            logger.info('Pulling basemap')
+            logger.info(f'Pulling basemap ({url})')
 
             try:
                 elevations = results[['elevation']].values
