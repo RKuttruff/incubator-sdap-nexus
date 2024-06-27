@@ -619,7 +619,7 @@ class Tomogram3DResults(NexusResults):
                 buf = BytesIO(r.content)
 
                 img = Image.open(buf)
-                img_data = np.array(img)
+                img_data = np.flipud(np.array(img))
 
                 lats = np.linspace(min_lat, max_lat, num=img.height)
                 lons = np.linspace(min_lon, max_lon, num=img.width)
